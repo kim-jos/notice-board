@@ -1,0 +1,19 @@
+<tr *ngFor="let row of rows">
+    <!-- <td>{{count}}</td> -->
+    <td>{{row.title}}</td>
+    
+    <!-- Button trigger modal -->
+    <td><a routerLink='/view-notice/{{row.id}}'>{{row.author}}</a></td>
+    <td>{{row.time.toDate() | date:'YY/MM/dd HH:mm:ss' }}</td>
+    <td>
+        <button 
+            (click)="delNotice(row.id)"
+            class="btn btn-primary">Delete
+        </button>
+    </td>
+    <td>
+        <a
+            routerLink='/edit-notice/{{row.id}}'>Edit
+        </a>
+    </td>
+</tr>

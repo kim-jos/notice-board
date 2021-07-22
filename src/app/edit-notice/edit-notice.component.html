@@ -1,0 +1,32 @@
+<h3>Edit notice</h3>
+<form #noticeForm='ngForm' (ngSubmit)="editNotice(noticeForm)">
+    <div class="form-group">
+        <label for="noticeAuthor">Name</label>
+        <input 
+            class="form-control" 
+            id="noticeAuthor" 
+            ngModel="{{prepopulate.author}}"
+            name="author">
+    </div>
+
+    <div class="form-group">
+        <label for="noticeTitle">Notice Title</label>
+        <input 
+            class="form-control" 
+            id="noticeTitle" 
+            ngModel="{{prepopulate.title}}"
+            name="title">
+    </div>
+    
+    <div class="form-group">
+        <label for="noticeContent">Notice</label>
+        <textarea 
+            class="form-control" 
+            id="noticeContent" 
+            rows="3"
+            ngModel="{{prepopulate.notice}}"
+            name="notice"></textarea>
+    </div>
+    
+    <button type="submit" class="btn btn-secondary">Edit</button>
+</form>

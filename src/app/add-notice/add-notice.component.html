@@ -1,0 +1,44 @@
+
+<form class="wrapper" #noticeForm='ngForm' (ngSubmit)="submitNotice(noticeForm)">
+    <div class="card radius shadowDepth1">
+        <div class="card__content card__padding">
+            <h3>Add notice</h3>
+
+            <div class="form-group">
+                <label for="noticeAuthor">Name</label>
+                <input 
+                    class="form-control" 
+                    id="noticeAuthor" 
+                    placeholder="Name"
+                    ngModel
+                    name='author'>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="noticeTitle">Notice Title</label>
+                <input 
+                    class="form-control" 
+                    id="noticeTitle" 
+                    placeholder="Enter title"
+                    ngModel
+                    name='title'>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="noticeContent">Notice</label>
+                <textarea 
+                    class="form-control" 
+                    id="noticeContent" 
+                    rows="3"
+                    ngModel
+                    name='notice'>
+                </textarea>
+                <br>
+                <div class="btn-wrapper">
+                    <button type="submit" class="btn btn-secondary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</form>

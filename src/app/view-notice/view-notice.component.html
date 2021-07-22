@@ -1,0 +1,72 @@
+
+<div class="wrapper">   
+    <div class="card radius shadowDepth1">
+        <div class="card__content card__padding">
+            <div class="card__meta">
+                <time>{{view.time.toDate() | date:'YY/MM/dd HH:mm:ss' }}</time><br>
+                <time><strong>By {{view.author}}</strong></time>
+            </div>
+
+            <article class="card__article">
+                <h2>{{view.title}}</h2>
+                <p>{{view.notice}}</p>
+            </article>
+
+            <br>
+            <hr>
+            <br>
+
+<!-- Comments -->
+            <div *ngFor="let comment of comments">
+                <div>{{comment.comment}}</div>
+                <div class="card__meta">
+                    <time>By {{comment.author}}</time>&nbsp;
+                    <span><time>({{comment.time.toDate() | date:'YY/MM/dd HH:mm:ss'}})</time></span> 
+                </div>
+            </div>
+
+
+<!-- add comments modal -->
+<div class="btn-wrapper">
+    <button type="button" class="btn btn-secondary" (click)="openModal(template)">Add Comment</button>
+</div>
+
+<ng-template #template>
+    <form #commentForm='ngForm' (ngSubmit)="submitComment(commentForm, routeId)">
+        <div class="form-group">
+            <label for="commentAuthor">Name</label>
+            <input 
+                class="form-control" 
+                id="commentAuthor" 
+                placeholder="Name"
+                ngModel
+                name='author'>
+        </div>
+
+        <div class="form-group">
+            <label for="commentContent">Comment</label>
+            <textarea 
+                class="form-control" 
+                id="commentContent" 
+                rows="3"
+                ngModel
+                name='comment'>
+            </textarea>
+        </div>
+        <br>
+        <div class="btn-wrapper">
+            <button 
+                type="submit" 
+                class="btn btn-secondary">Submit Comment
+            </button>
+        </div>
+    
+    </form>
+</ng-template>
+
+    </div>
+
+    </div>
+</div>
+
+
