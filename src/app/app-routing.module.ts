@@ -4,6 +4,7 @@ import { TableComponent } from './table/table.component';
 import { AddNoticeComponent } from './add-notice/add-notice.component';
 import { EditNoticeComponent } from './edit-notice/edit-notice.component';
 import { ViewNoticeComponent } from './view-notice/view-notice.component';
+
 const routes: Routes = [
   { 
     path: 'table', 
@@ -21,11 +22,11 @@ const routes: Routes = [
     path: 'view-notice/:id', 
     component: ViewNoticeComponent
   },
-  { 
-    path: '', 
-    redirectTo: '/table',
-    pathMatch: 'full'
-  },
+  // { 
+  //   path: '', 
+  //   redirectTo: '/signin',
+  //   pathMatch: 'full'
+  // },
 ];
 
 @NgModule({

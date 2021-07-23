@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { NgForm } from '@angular/forms';
 import { Notice } from '../app/notice'
 import * as firebase from 'firebase/app'
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class NoticeService {
 
   constructor(private firestore: AngularFirestore) { }
@@ -18,8 +18,13 @@ export class NoticeService {
       .valueChanges()
   }
 
-  getNoticeList() {
-    return this.firestore.collection('notices').snapshotChanges();
+  getNoticeList(row?: any) {
+    return this.firestore
+      .collection('notices', ref => ref
+        .orderBy('time')
+        .startAfter(row || 0)
+        .limit(3))
+      .snapshotChanges()
   }
 
   getComments(noticeId: any) {

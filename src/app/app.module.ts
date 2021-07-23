@@ -19,6 +19,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoticeComponent } from './notice/notice.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
+import { HttpClientModule } from '@angular/common/http';
+import { SigninComponent } from './signin/signin.component'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +32,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     AddNoticeComponent,
     EditNoticeComponent,
     ViewNoticeComponent,
-    NoticeComponent
+    NoticeComponent,
+    SigninComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +44,9 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     ModalModule.forRoot(),
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
+    InfiniteScrollModule,
+    NgxSpinnerModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

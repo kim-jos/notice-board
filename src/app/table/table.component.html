@@ -1,42 +1,54 @@
 
-<div *ngFor="let row of rows">
-
-    <div class="wrapper">   
-
-        <div class="card radius shadowDepth1">
-
-            <div class="card__content card__padding">
-                <div class="card__meta">
-                    <time>{{row.time.toDate() | date:'YY/MM/dd HH:mm:ss' }}</time>
+<div
+    class="cards"
+    infiniteScroll
+    [infiniteScrollDistance]='1'
+    (scrolled)='onScroll()'>
+    <div *ngFor="let row of rows">
+    <!-- card box -->
+        <div class="wrapper">   
+            <div class="card radius shadowDepth1">
+                <div class="card__content card__padding">
+                    <div class="card__meta">
+                        <time>{{row.time.toDate() | date:'YY/MM/dd HH:mm:ss' }}</time>
+                    </div>
+                    <article class="card__article">
+                        <h2><a routerLink='/view-notice/{{row.id}}'>{{row.title}}</a></h2>
+                        <p>{{row.notice}}</p>
+                    </article>
                 </div>
-    
-                <article class="card__article">
-                    <h2><a routerLink='/view-notice/{{row.id}}'>{{row.title}}</a></h2>
-                    <p>{{row.notice}}</p>
-                </article>
-            </div>
-    
-            <div class="card__action">
-                <div class="card__author">
-                    <div class="card__author-content">
-                        <a><i>By {{row.author}}</i></a>
+                <div class="card__action">
+                    <div class="card__author">
+                        <div class="card__author-content">
+                            <a><i>By {{row.author}}</i></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="btn-group" dropdown>
-                <div id="button-animated" dropdownToggle class="dropdown-toggle"
-                        aria-controls="dropdown-animated"><span class="caret"></span>
+    <!-- Dropdown button -->
+                <div class="btn-group" dropdown>
+                    <div id="button-animated" dropdownToggle class="dropdown-toggle" aria-controls="dropdown-animated"></div>
+                    <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-animated">
+                        <li role="menuitem"><a routerLink='/edit-notice/{{row.id}}'>Edit</a></li>
+                        <li role="menuitem" class="menuItem" (click)="delNotice(row.id)">Delete</li>
+                    </ul>
                 </div>
-                
-                <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-animated">
-                    <li role="menuitem"><a routerLink='/edit-notice/{{row.id}}'>Edit</a></li>
-                    <li role="menuitem" class="menuItem" (click)="delNotice(row.id)">Delete</li>
-                </ul>
+    <!-- Dropdown button -->
             </div>
         </div>
-
+    <!-- card box -->
     </div>
+</div>
 
-
+<!-- spinner -->
+<div class="row pb-5">
+    <div class="col-md-12 p-5">
+        <ngx-spinner
+        bdOpacity = 0.9
+        bdColor = ""
+        size = "default"
+        color = "#581f87"
+        type = "ball-pulse-sync"
+        [fullScreen] = "false"
+        ></ngx-spinner>
+  </div>
 </div>

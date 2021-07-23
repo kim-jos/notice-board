@@ -1,7 +1,20 @@
-<h1>Notice Board</h1>
-<nav>
-    <a routerLink="/add-notice">Add Notice</a><br>
-    <a routerLink="/table">Go to table</a>
-</nav>
-<hr>
+
+
+
+<div *ngIf="isLoggedIn">
+    <h1>Notice Board</h1>
+    <nav>
+        <a routerLink="/add-notice">Add Notice</a>
+        <br>
+        <a routerLink="/table">Go to table</a>
+    </nav>
+    <hr>
+    
+    <button (click)="logout()">Logout</button>
+</div>
+
+<div *ngIf="!isLoggedIn">
+    <button (click)="loginWithGoogle()">Login</button>
+</div>
+
 <router-outlet></router-outlet>
