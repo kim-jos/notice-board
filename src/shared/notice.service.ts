@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Notice } from '../app/notice'
+import { Notice, Comment } from '../app/notice'
 import * as firebase from 'firebase/app'
 
 @Injectable({
@@ -18,7 +18,7 @@ export class NoticeService {
       .valueChanges()
   }
 
-  getNoticeList(row?: any) {
+  getNoticeList(row?: Date) {
     return this.firestore
       .collection('notices', ref => ref
         .orderBy('time')
@@ -27,7 +27,7 @@ export class NoticeService {
       .snapshotChanges()
   }
 
-  getComments(noticeId: any) {
+  getComments(noticeId: string) {
     return this.firestore
       .collection('notices')
       .doc(noticeId)
@@ -35,7 +35,7 @@ export class NoticeService {
       .snapshotChanges();
   }
 
-  createNotice(notice: any) {
+  createNotice(notice: Notice) {
     console.log('created notice')
     return this.firestore.collection('notices').add({
       ...notice,
@@ -43,7 +43,7 @@ export class NoticeService {
     });
   }
 
-  createComment(comment: any, noticeId: any) {
+  createComment(comment: Comment, noticeId: string) {
     console.log('comment added')
     return this.firestore
       .collection('notices')
@@ -55,7 +55,7 @@ export class NoticeService {
       })
   }
 
-  updateNotice(notice: Notice, noticeId: any) {
+  updateNotice(notice: Notice, noticeId: string) {
     this.firestore
       .collection('notices')
       .doc(noticeId)

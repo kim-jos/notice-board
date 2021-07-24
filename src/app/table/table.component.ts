@@ -12,7 +12,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 
 export class TableComponent implements OnInit {
-  rows: any[] = [];
+  rows: Notice[] = [];
 
   delNotice(noticeId: string) {
     this.noticeService.deleteNotice(noticeId)

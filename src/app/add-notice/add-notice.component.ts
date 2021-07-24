@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NoticeService } from 'src/shared/notice.service';
-import { Notice } from '../notice';
-
 
 @Component({
   selector: 'app-add-notice',

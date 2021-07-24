@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NoticeService } from 'src/shared/notice.service';
+import { Notice } from '../notice';
 
 @Component({
   selector: 'app-notice',
@@ -12,7 +13,7 @@ export class NoticeComponent implements OnInit {
     this.noticeService.deleteNotice(noticeId)
   }
 
-  rows: any[] = [];
+  rows: Notice[] = [];
   
   constructor(
     private noticeService: NoticeService,
@@ -21,8 +22,6 @@ export class NoticeComponent implements OnInit {
   ngOnInit(): void {
     this.noticeService.getNoticeList().subscribe(res => {
       this.rows = res.map((e: any) => {
-        // console.log('e', e.payload.doc.data())
-        // console.log('id', e.payload.doc.id)
         return {
           id: e.payload.doc.id,
           ...e.payload.doc.data()
