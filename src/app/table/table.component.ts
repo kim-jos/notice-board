@@ -1,8 +1,9 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NoticeService } from 'src/shared/notice.service';
 import { Notice } from '../notice';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-table',
@@ -14,8 +15,19 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class TableComponent implements OnInit {
   rows: Notice[] = [];
 
+  startAt = new Subject();
+  endAt = new Subject();
+  startobs = this.startAt.asObservable();
+  endobs = this.endAt.asObservable();
+
   delNotice(noticeId: string) {
     this.noticeService.deleteNotice(noticeId)
+  }
+
+  search($event: any) {
+    let query = $event.target.value;
+    this.startAt.next(query);
+    this.endAt.next(query + "\uf8ff")
   }
 
   onScroll() {

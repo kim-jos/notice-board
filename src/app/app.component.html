@@ -1,20 +1,19 @@
 
 
 
-<div *ngIf="isLoggedIn">
+<!-- <div *ngIf="isLoggedIn"> -->
     <h1>Notice Board</h1>
     <nav>
-        <a routerLink="/add-notice">Add Notice</a>
-        <br>
-        <a routerLink="/table">Go to table</a>
+        <button class="btn btn-primary"><a routerLink="/add-notice">Add Notice</a></button>
+        <button class="btn btn-primary"><a routerLink="/table">Go to table</a></button>
     </nav>
     <hr>
     
-    <button (click)="logout()">Logout</button>
-</div>
+    <!-- <button (click)="logout()">Logout</button> -->
+<!-- </div> -->
 
-<div *ngIf="!isLoggedIn">
+<!-- <div *ngIf="!isLoggedIn">
     <button (click)="loginWithGoogle()">Login</button>
-</div>
+</div> -->
 
 <router-outlet></router-outlet>

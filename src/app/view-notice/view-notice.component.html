@@ -17,18 +17,28 @@
             <br>
 
 <!-- Comments -->
-            <div *ngFor="let comment of comments">
-                <div>{{comment.comment}}</div>
-                <div class="card__meta">
-                    <time>By {{comment.author}}</time>&nbsp;
-                    <span><time>({{comment.time.toDate() | date:'YY/MM/dd HH:mm:ss'}})</time></span> 
+            <div class="comments" *ngFor="let comment of comments">
+                <div class="comments-left">
+                    <div>{{comment.comment}}</div>
+                    <div class="card__meta">
+                        <time>By {{comment.author}}</time>&nbsp;
+                        <span><time>({{comment.time.toDate() | date:'YY/MM/dd HH:mm:ss'}})</time></span> 
+                    </div>
+                </div>
+                <div class="comments-right">
+                    <button 
+                        class="btn btn-secondary" 
+                        (click)="delComment(comment.id)">Delete
+                    </button>
                 </div>
             </div>
+
+<!-- <div *ngIf="(clic)"> -->
 
 
 <!-- add comments modal -->
 <div class="btn-wrapper">
-    <button type="button" class="btn btn-secondary" (click)="openModal(template)">Add Comment</button>
+    <button type="button" class="btn btn-primary" (click)="openModal(template)">Add Comment</button>
 </div>
 
 <ng-template #template>

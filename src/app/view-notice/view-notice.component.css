@@ -132,3 +132,17 @@ form {
 	padding: 10px;
 	margin: 10px;
 }
+
+
+/* comments */
+
+.comments {
+	display: flex;
+	justify-content: space-between;
+}
+.comments-right {
+	display: flex;
+}
+.comments-right button {
+	margin: 2px;
+}

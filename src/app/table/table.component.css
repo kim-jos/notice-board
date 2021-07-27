@@ -52,13 +52,24 @@ h2 {
 		0 1px 2px rgba(0,0,0, 0.24);      
 }
 
+/* Search */
+
+.search {
+	display: flex;
+	justify-content: center;
+}
+
+.search > * {
+	margin: 3px;
+}
+
 /**
  * Card Styles
  */
 
 .card {
 	background-color: #fff;
-	margin-bottom: 1.6rem;
+	margin-bottom: 1.5rem;
 }
 .card__padding {
 	padding: 1.6rem;

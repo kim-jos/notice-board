@@ -1,0 +1,12 @@
+* {
+    padding: 10px;
+    margin: 10px;
+}
+a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+button {
+    margin-right: 5px;
+    margin-left: 0;
+}

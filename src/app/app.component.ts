@@ -7,7 +7,7 @@ import { AuthService } from 'src/shared/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
+  title: string = 'notice-board'
   constructor(private authService: AuthService) { }
   
   isLoggedIn: any;

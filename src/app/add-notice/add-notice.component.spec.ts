@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
 import { AddNoticeComponent } from './add-notice.component';
 
@@ -8,7 +9,8 @@ describe('AddNoticeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddNoticeComponent ]
+      declarations: [ AddNoticeComponent ],
+      imports: [ FormsModule ]
     })
     .compileComponents();
   });
@@ -19,7 +21,9 @@ describe('AddNoticeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+
 });
+
+class MockNoticeService {
+
+}

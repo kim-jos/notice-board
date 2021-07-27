@@ -9,12 +9,15 @@ import { NoticeService } from 'src/shared/notice.service';
 })
 export class AddNoticeComponent implements OnInit {
 
+  isSubmitted?: boolean;
+  
   submitNotice(form: NgForm) {
     this.noticeService.createNotice(form.value)
+    this.isSubmitted = true
   }
+  
   constructor(private noticeService: NoticeService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }

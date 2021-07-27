@@ -4,6 +4,14 @@
     infiniteScroll
     [infiniteScrollDistance]='1'
     (scrolled)='onScroll()'>
+
+    <!-- <div class="search container">
+        <label>Search</label>
+        <input 
+            type="text"
+            (keydown)='search($event)'>
+    </div> -->
+
     <div *ngFor="let row of rows">
     <!-- card box -->
         <div class="wrapper">   

@@ -11,7 +11,7 @@ import { Notice } from '../notice';
 })
 export class EditNoticeComponent implements OnInit {
   
-  prepopulate!: Notice;
+  prepopulate: Notice|undefined;
   routeId = this.route.snapshot.paramMap.get('id') as string
   
   editNotice(form: NgForm) {

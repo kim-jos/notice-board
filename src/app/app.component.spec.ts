@@ -1,35 +1,33 @@
+import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AuthService } from 'src/shared/auth.service';
 import { AppComponent } from './app.component';
+
+// router link tests
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule.withRoutes(
+          [
+            { path: 'add-notice', component: DummyComponent}
+          ]
+        )
       ],
       declarations: [
-        AppComponent
+        AppComponent, 
+        DummyComponent
       ],
+      providers: [
+        { provide: AngularFirestore }
+      ]
     }).compileComponents();
   });
-
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'notice-board'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('notice-board');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('notice-board app is running!');
-  });
+  
 });
+
+@Component({template: '' })
+class DummyComponent {}

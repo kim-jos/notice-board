@@ -11,10 +11,15 @@ export class NoticeService {
 
   constructor(private firestore: AngularFirestore) { }
 
+  // searchNoticeList(start, end) {
+  //   return this.getNoticeList().subscribe(() => {
+  //   })
+  // }
+
   getNotice(noticeId: string) {
     return this.firestore
       .collection('notices')
-      .doc(noticeId)
+      .doc<Notice>(noticeId)
       .valueChanges()
   }
 
@@ -63,14 +68,25 @@ export class NoticeService {
         // time: firebase.default.firestore.FieldValue.serverTimestamp(),
         ...notice
       })
-      .then(() => console.log('update complete'))
-  }
+      .then(() => console.log('notice update complete'))
+    }
 
   deleteNotice(noticeId: string) {
     this.firestore
       .collection('notices')
       .doc(noticeId)
       .delete()
-      .then(() => console.log('deleted successfully'));
+      .then(() => console.log('notice deleted successfully'));
+    }
+    
+    deleteComment(noticeId: string, commentId: string) {
+      this.firestore
+      .collection('notices')
+      .doc(noticeId)
+      .collection('comments')
+      .doc(commentId)
+      .delete()
+      .then(() => console.log('comment deleted successfully'));
   }
+
 }

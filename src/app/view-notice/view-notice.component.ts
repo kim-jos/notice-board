@@ -32,6 +32,10 @@ export class ViewNoticeComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 
+  delComment(commentId: string) {
+    this.noticeService.deleteComment(this.routeId, commentId);
+  }
+
   ngOnInit(): void {
     this.noticeService.getNotice(this.routeId).subscribe((res: any) => {
       this.view = res;
